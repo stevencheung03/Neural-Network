@@ -25,3 +25,30 @@ class Neuron:
             error (float): Used during backpropagation process to adjust weights
         """
         self.data = error * sigmoid_derivative(self.output)
+        
+    def weighted_sum(self, inputs:List[float]) -> float:
+        """_summary_
+
+        Args:
+            inputs (List[float]): data inputted from the input layer into the network
+
+        Returns:
+            float: weighted sum
+        """
+        ws = self.bias
+        for i in range(len(self.weights)):
+            ws += self.weighted_sum[i] * self.inputs[i]
+        return ws
+    
+    def activate(self, inputs:List[float]) -> float:
+        """_summary_
+
+        Args:
+            inputs (List[float]): data inputted from the input layer into the network
+
+        Returns:
+            float: activation of the inputs
+        """
+        output = sigmoid(self.weighted_sum(inputs))
+        self.set_output
+        return output
