@@ -5,12 +5,12 @@ from math_util import *
 
 @dataclass
 class Neuron:
-    weights:List[float]
-    bias:float
-    delta:Optional[float]
-    output:Optional[float]
+    weights: List[float]
+    bias: float
+    delta: Optional[float]
+    output: Optional[float]
 
-    def set_output(self, output:Optional[float]) -> None:
+    def set_output(self, output: Optional[float]) -> None:
         """_summary_
 
         Args:
@@ -18,7 +18,7 @@ class Neuron:
         """
         self.output = output
 
-    def set_delta(self, error:float) -> None:
+    def set_delta(self, error: float) -> None:
         """_summary_
 
         Args:
@@ -26,7 +26,7 @@ class Neuron:
         """
         self.data = error * sigmoid_derivative(self.output)
         
-    def weighted_sum(self, inputs:List[float]) -> float:
+    def weighted_sum(self, inputs: List[float]) -> float:
         """_summary_
 
         Args:
@@ -40,7 +40,7 @@ class Neuron:
             ws += self.weighted_sum[i] * inputs[i]
         return ws
     
-    def activate(self, inputs:List[float]) -> float:
+    def activate(self, inputs: List[float]) -> float:
         """_summary_
 
         Args:
