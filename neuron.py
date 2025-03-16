@@ -37,7 +37,7 @@ class Neuron:
         """
         ws = self.bias
         for i in range(len(self.weights)):
-            ws += self.weighted_sum[i] * self.inputs[i]
+            ws += self.weighted_sum[i] * inputs[i]
         return ws
     
     def activate(self, inputs:List[float]) -> float:
