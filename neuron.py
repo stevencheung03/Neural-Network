@@ -11,7 +11,7 @@ class Neuron:
     output: Optional[float]
 
     def set_output(self, output: Optional[float]) -> None:
-        """_summary_
+        """Sets the output value of the neuron.
 
         Args:
             output (Optional[float]): The result of the neuron's activation function
@@ -19,21 +19,21 @@ class Neuron:
         self.output = output
 
     def set_delta(self, error: float) -> None:
-        """_summary_
+        """Calculates and sets the delta value for the neuron, used in backpropagation to adjust weights.  
 
         Args:
-            error (float): Used during backpropagation process to adjust weights
+            error (float): The error term used for weight adjustments.
         """
         self.data = error * sigmoid_derivative(self.output)
         
     def weighted_sum(self, inputs: List[float]) -> float:
-        """_summary_
+        """Computes the weighted sum of inputs and biases for the neuron.
 
         Args:
-            inputs (List[float]): data inputted from the input layer into the network
+            inputs (List[float]): Data inputted from the input layer into the network.
 
         Returns:
-            float: weighted sum
+            float: The weighted sum of inputs and bias.
         """
         ws = self.bias
         for i in range(len(self.weights)):
@@ -41,13 +41,13 @@ class Neuron:
         return ws
     
     def activate(self, inputs: List[float]) -> float:
-        """_summary_
+        """Computes the neuron's activation by applying the sigmoid function to the weighted sum of inputs.
 
         Args:
-            inputs (List[float]): data inputted from the input layer into the network
+            inputs (List[float]): Data inputted from the input layer into the network.
 
         Returns:
-            float: activation of the inputs
+            float: The activated output of the neuron.
         """
         output = sigmoid(self.weighted_sum(inputs))
         self.set_output
