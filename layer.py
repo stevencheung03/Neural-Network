@@ -7,7 +7,7 @@ from neuron import *
 class Layer:
     neurons: List[Neuron]
 
-    def all_outputs(self, inputs: List[float]) -> List[float]:
+    def all_outputs(self) -> List[float]:
         return [neuron.output for neuron in self.neurons]
     
     def activate_neurons(self, input: List[float]) -> List[float]:
