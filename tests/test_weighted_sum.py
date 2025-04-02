@@ -1,6 +1,6 @@
 import unittest
 
-from neuron import *
+from core.neuron import *
 
 class TestWeightedSum(unittest.TestCase):
     def test_weighted_sum_case_0(self):

@@ -1,6 +1,6 @@
 import unittest
 
-from neuron import *
+from core.neuron import *
 
 class TestActivate(unittest.TestCase):
     def test_activate_case_0(self):
