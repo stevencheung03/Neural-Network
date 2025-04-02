@@ -1,2 +1,5 @@
 # ignore all pycache directories
 __pycache__/
+
+# ignore all pytest_cache directories
+.pytest_cache/
