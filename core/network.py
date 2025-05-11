@@ -21,3 +21,18 @@ class Network:
             List[Layer]: Ordered list containing all layers of the model.
         """
         return self.hidden_layers + [self.output_layers]
+    
+    def feed_forward(self, inputs: List[float]) -> List[float]:
+        """
+        Performs a forward pass through the neural network.
+        
+        Args:
+            inputs (List[float]): A list of input values to feed into the network.
+
+        Returns:
+            List[float]: The output values produced by the network after passing 
+                        through all hidden layers and the output layer.
+        """
+        for layer in self.hidden_layers:
+            inputs = layer.activate_neurons(inputs)
+        return self.output_layers.activate_neurons(inputs)
