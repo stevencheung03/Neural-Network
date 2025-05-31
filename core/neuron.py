@@ -50,5 +50,5 @@ class Neuron:
             float: The activated output of the neuron.
         """
         output = sigmoid(self.weighted_sum(inputs))
-        self.set_output
+        self.set_output(output)
         return output
