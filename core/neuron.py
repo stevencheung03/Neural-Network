@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from math_util import *
+from core.math_util import *
 
 @dataclass
 class Neuron:

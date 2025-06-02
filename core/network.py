@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from layer import *
+from core.layer import *
 
 @dataclass
 class Network:
