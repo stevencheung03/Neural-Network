@@ -16,3 +16,6 @@ class Network:
         for layer in self.hidden_layers:
             inputs = layer.activate_neurons(inputs)
         return self.output_layers.activate_neurons(inputs)
+    
+    def derivative_error_to_output(self, actual: List[float], expected: List[float]) -> List[float]:
+        return [actual[i]-expected[i] for i in range(len(actual))]
