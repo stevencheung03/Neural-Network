@@ -20,3 +20,9 @@ class Network:
     def derivative_error_to_output(self, actual: List[float], expected: List[float]) -> List[float]:
         return [actual[i]-expected[i] for i in range(len(actual))]
     
+    def update_weights_for_all_layers(self, inputs: List[float]):
+        pass
+
+    def update_weights_in_a_layer(self, previous_layer_outputs: List[float], neuron: Neuron) -> None:
+        pass
+    
