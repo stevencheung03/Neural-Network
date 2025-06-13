@@ -19,3 +19,4 @@ class Network:
     
     def derivative_error_to_output(self, actual: List[float], expected: List[float]) -> List[float]:
         return [actual[i]-expected[i] for i in range(len(actual))]
+    
