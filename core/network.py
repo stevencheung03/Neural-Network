@@ -42,4 +42,24 @@ class Network:
         for idx in range(len(previous_layer_outputs)):
             neuron.weights[idx] -= (self.learning_rate * neuron.delta * previous_layer_outputs[idx])
             neuron.bias -= self.learning_rate * neuron.delta
+
+    def train(self, num_epoch: int, num_outputs: int, training_set: List[List[float]], training_output: List[float]) -> None:
+        for epoch in range(num_epoch):
+            sum_error = 0.0
+            for idx, row in enumerate(training_set):
+                expected = [0 for _ in range(num_outputs)]
+                expected[training_output[idx]] = 1
+                actual = self.feed_forward(row)
+                errors = self.derivative_error_to_output(actual, expected)
+                self.back_propagate(row, errors)
+                sum_error += self.mse(actual, training_output)
+            print(f"Mean Squared Error: {sum_error}")
+            print(f"Epoch = {epoch}")
+    
+    def predict(self, inputs: List[float]) -> int:
+        outputs = self.feed_forward(inputs)
+        return outputs.index(max(outputs))
+    
+    def mse(self, actual: List[float], expected: List[float]) -> float:
+        return sum((actual[i] - expected[i]) ** 2 for i in range(len(actual))) / len(actual)
     
