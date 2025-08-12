@@ -21,8 +21,14 @@ class Network:
         return [actual[i]-expected[i] for i in range(len(actual))]
     
     def update_weights_for_all_layers(self, inputs: List[float]):
-        pass
+        for layer_idx in range(len(self.hidden_layers)):
+            layer = self.hidden_layers[layer_idx]
+            previous_layer_outputs: List[float] = (inputs if layer_idx == 0 else self.hidden_layers[layer_idx - 1].all_outputs)
+            for neuron in layer.neurons:
+                self.update_weights_in_a_layer(previous_layer_outputs, neuron)
 
     def update_weights_in_a_layer(self, previous_layer_outputs: List[float], neuron: Neuron) -> None:
-        pass
+        for idx in range(len(previous_layer_outputs)):
+            neuron.weights[idx] -= (self.learning_rate * neuron.delta * previous_layer_outputs[idx])
+            neuron.bias -= self.learning_rate * neuron.delta
     
