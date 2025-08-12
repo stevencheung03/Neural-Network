@@ -20,6 +20,17 @@ class Network:
     def derivative_error_to_output(self, actual: List[float], expected: List[float]) -> List[float]:
         return [actual[i]-expected[i] for i in range(len(actual))]
     
+    def back_propagate(self, inputs: List[float], errors: List[float]) -> None:
+        for index, neuron in enumerate(self.output_layers.neurons):
+            neuron.set_delta(errors[index])
+        for layer_idx in reversed(range(len(self.hidden_layers))):
+            layer = self.hidden_layers[layer_idx]
+            next_layer = (self.output_layers if layer_idx == len(self.hidden_layers) - 1 else self.hidden_layers[layer_idx + 1])
+            for neuron_idx, neuron in enumerate(layer.neurons):
+                error_from_next_layer = next_layer.total_delta(neuron_idx)
+                neuron.set_delta(error_from_next_layer)
+        self.update_weights_for_all_layers(inputs)
+    
     def update_weights_for_all_layers(self, inputs: List[float]):
         for layer_idx in range(len(self.hidden_layers)):
             layer = self.hidden_layers[layer_idx]
